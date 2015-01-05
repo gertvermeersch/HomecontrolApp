@@ -83,7 +83,7 @@ sap.ui.jsview("homeautomation.view.Lighting", {
 					}),
 					 new sap.m.Label({
 						}),
-					new sap.m.Button({
+					new sap.m.ToggleButton({
 						id : "btnTwilight2", // sap.ui.core.ID
 						text : "Standing lamp", // string
 						type : sap.m.ButtonType.Default, // sap.m.ButtonType
@@ -92,11 +92,11 @@ sap.ui.jsview("homeautomation.view.Lighting", {
 						tap : [ function(oEvent) {
 							var control = oEvent.getSource();
 						}, this ],
-						press :  [ function(oEvent) {oController.onButtonTap(oEvent);}, oController]
+						press :  [ function(oEvent) {oController.onButtonTap(oEvent, "living/twilight/");}, oController]
 					}),
 					 new sap.m.Label({
 						}),
-					new sap.m.Button({
+					new sap.m.ToggleButton({
 						id : "btnUplighter", // sap.ui.core.ID
 						text : "Uplighter", // string
 						type : sap.m.ButtonType.Default, // sap.m.ButtonType
@@ -105,7 +105,7 @@ sap.ui.jsview("homeautomation.view.Lighting", {
 						tap : [ function(oEvent) {
 							var control = oEvent.getSource();
 						}, this ],
-						press : [ function(oEvent) {oController.onButtonTap(oEvent);}, oController]
+						press : [ function(oEvent) {oController.onButtonTap(oEvent, "living/uplighter/");}, oController]
 					}),
 					 new sap.m.Label({
 						 text : "LED Red"
