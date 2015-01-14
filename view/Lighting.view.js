@@ -36,16 +36,7 @@ sap.ui.jsview("homeautomation.view.Lighting", {
 		// sap.ui.core.Control, since 1.15.0
 		});
  		
- 		var grdLiving = new sap.ui.layout.Grid({
-			id : "grdLiving", // sap.ui.core.ID
-			width : "100%", // sap.ui.core.CSSSize
-			position: "Left",
-			vSpacing : 1, // int
-			hSpacing : 1, // int
-			defaultSpan : "L12 M12 S12", // sap.ui.layout.GridSpan
-			defaultIndent : "L0 M0 S0" // sap.ui.layout.GridIndent
-		});
- 		
+
  		
  		var frmLiving = new sap.ui.layout.form.SimpleForm({
 			id : "frmLiving", // sap.ui.core.ID
@@ -53,36 +44,22 @@ sap.ui.jsview("homeautomation.view.Lighting", {
 			editable : true, // boolean
 			labelMinWidth : 1, // int
 			layout : sap.ui.layout.form.SimpleFormLayout.ResponsiveGridLayout, // sap.ui.layout.form.SimpleFormLayout
-			labelSpanL : 1, // int, since 1.16.3
-			labelSpanM : 3, // int, since 1.16.3
-			labelSpanS : 6, // int, since 1.16.3
-			emptySpanL : 0, // int, since 1.16.3
-			emptySpanM : 0, // int, since 1.16.3
-			emptySpanS : 0, // int, since 1.16.3
-			columnsL : 12, // int, since 1.16.3
-			columnsM : 12, // int, since 1.16.3
-			breakpointL : 770, // int, since 1.16.3
-			breakpointM : 600, // int, since 1.16.3
-			maxContainerCols : 2,
 			content: [
 			          new sap.m.Label({
-			        	  text : "Balls"
+			        	  text : "Lights"
 					}),
-			          new sap.m.Button({
+			          new sap.m.ToggleButton({
 						id : "btnTwilight1", // sap.ui.core.ID
-						text : "2 Small twilights", // string
+						text : "2x Twilight", // string
 						type : sap.m.ButtonType.Default, // sap.m.ButtonType
 						icon : "sap-icon://energy-saving-lightbulb", // sap.ui.core.URI
 						iconFirst : true, // boolean
 						tap : [ function(oEvent) {
 							var control = oEvent.getSource();
 						}, this ],
-						press : [ function(oEvent) {
-							oController.onButtonTap(oEvent);
-						}, this ]
+						press : [ function(oEvent) {oController.onButtonTap(oEvent, "living/twilights/");}, oController]
 					}),
-					 new sap.m.Label({
-						}),
+
 					new sap.m.ToggleButton({
 						id : "btnTwilight2", // sap.ui.core.ID
 						text : "Standing lamp", // string
@@ -94,8 +71,19 @@ sap.ui.jsview("homeautomation.view.Lighting", {
 						}, this ],
 						press :  [ function(oEvent) {oController.onButtonTap(oEvent, "living/twilight/");}, oController]
 					}),
-					 new sap.m.Label({
-						}),
+
+					new sap.m.ToggleButton({
+						id : "btnDesklight", // sap.ui.core.ID
+						text : "Desk light", // string
+						type : sap.m.ButtonType.Default, // sap.m.ButtonType
+						icon : "sap-icon://lightbulb", // sap.ui.core.URI
+						iconFirst : true, // boolean
+						tap : [ function(oEvent) {
+							var control = oEvent.getSource();
+						}, this ],
+						press :  [ function(oEvent) {oController.onButtonTap(oEvent, "living/desklight/");}, oController]
+					}),
+
 					new sap.m.ToggleButton({
 						id : "btnUplighter", // sap.ui.core.ID
 						text : "Uplighter", // string
@@ -189,15 +177,7 @@ sap.ui.jsview("homeautomation.view.Lighting", {
 		// sap.ui.core.Control, since 1.15.0
 		});
  		
- 		var grdBedroom = new sap.ui.layout.Grid({
-			id : "grdBedroom", // sap.ui.core.ID
-			width : "100%", // sap.ui.core.CSSSize
-			position: "Left",
-			vSpacing : 1, // int
-			hSpacing : 1, // int
-			defaultSpan : "L8 M8 S12", // sap.ui.layout.GridSpan
-			defaultIndent : "L0 M0 S0", // sap.ui.layout.GridIndent
-		});
+
  		
  		
  		var frmBedroom = new sap.ui.layout.form.SimpleForm({
@@ -206,48 +186,33 @@ sap.ui.jsview("homeautomation.view.Lighting", {
 			editable : true, // boolean
 			labelMinWidth : 1, // int
 			layout : sap.ui.layout.form.SimpleFormLayout.ResponsiveGridLayout, // sap.ui.layout.form.SimpleFormLayout
-			labelSpanL : 2, // int, since 1.16.3
-			labelSpanM : 2, // int, since 1.16.3
-			labelSpanS : 3, // int, since 1.16.3
-			emptySpanL : 0, // int, since 1.16.3
-			emptySpanM : 0, // int, since 1.16.3
-			emptySpanS : 0, // int, since 1.16.3
-			columnsL : 4, // int, since 1.16.3
-			columnsM : 2, // int, since 1.16.3
-			breakpointL : 770, // int, since 1.16.3
-			breakpointM : 600, // int, since 1.16.3
-			maxContainerCols : 2,
 			content: [
 			          new sap.m.Label({
 			        	  text : "Lights"
 					}),
-			          new sap.m.Button({
-						id : "btnSaltlamp", // sap.ui.core.ID
-						text : "Salt lamp", // string
-						type : sap.m.ButtonType.Default, // sap.m.ButtonType
-						icon : "sap-icon://lightbulb", // sap.ui.core.URI
-						iconFirst : true, // boolean
-						tap : [ function(oEvent) {
-							var control = oEvent.getSource();
-						}, this ],
-						press : [ function(oEvent) {
-							var control = oEvent.getSource();
-						}, this ]
-					}),
+				new sap.m.ToggleButton({
+					id : "btnSaltlamp", // sap.ui.core.ID
+					text : "LED Tree", // string
+					type : sap.m.ButtonType.Default, // sap.m.ButtonType
+					icon : "sap-icon://lightbulb", // sap.ui.core.URI
+					iconFirst : true, // boolean
+					tap : [ function(oEvent) {
+						var control = oEvent.getSource();
+					}, this ],
+					press : [ function(oEvent) {oController.onButtonTap(oEvent, "bedroom/saltlamp/");}, oController]
+				}),
 					 new sap.m.Label({
 						}),
-					new sap.m.Button({
-						id : "btnTwilightbr", // sap.ui.core.ID
-						text : "Twilight", // string
+					new sap.m.ToggleButton({
+						id : "btnScent", // sap.ui.core.ID
+						text : "Mistify", // string
 						type : sap.m.ButtonType.Default, // sap.m.ButtonType
-						icon : "sap-icon://energy-saving-lightbulb", // sap.ui.core.URI
+						icon : "sap-icon://arrow-top", // sap.ui.core.URI
 						iconFirst : true, // boolean
 						tap : [ function(oEvent) {
 							var control = oEvent.getSource();
 						}, this ],
-						press : [ function(oEvent) {
-							var control = oEvent.getSource();
-						}, this ]
+						press : [ function(oEvent) {oController.onButtonTap(oEvent, "bedroom/scent/");}, oController]
 					})			          
 			]
 		// sap.ui.core.Title, since 1.16.3
@@ -255,17 +220,19 @@ sap.ui.jsview("homeautomation.view.Lighting", {
  		
  		/*end of bedroom part*/
  		
- 		ifBedroom.addContent(grdBedroom.addContent(frmBedroom));
- 		ifLivingroom.addContent(grdLiving.addContent(frmLiving));
+ 		//ifBedroom.addContent(grdBedroom.addContent(frmBedroom));
+ 		//ifLivingroom.addContent(grdLiving.addContent(frmLiving));
+
+		ifBedroom.addContent(frmBedroom);
+		ifLivingroom.addContent(frmLiving);
  		
  
 	
 		
 		var page = new sap.m.Page({
 			title: "Lighting control",
-			content: [
-			
-			]
+			showNavButton: sap.ui.Device.system.phone,
+			navButtonPress: [oController.toMaster, oController]
 		});
 		
 		page.addContent(itRoomSelector);

@@ -18,20 +18,16 @@ sap.ui.jsview("homeautomation.view.App", {
 			defaultTransitionNameDetail : "slide", // string
 			defaultTransitionNameMaster : "slide", // string
 			mode : sap.m.SplitAppMode.ShowHideMode, // sap.m.SplitAppMode
-			masterButtonText : undefined, // string
-			backgroundColor : undefined, // string, since 1.11.2
-			backgroundImage : undefined, // sap.ui.core.URI, since 1.11.2
-			backgroundRepeat : false, // boolean, since 1.11.2
-			backgroundOpacity : 1, // float, since 1.11.2
 			homeIcon : "sap-icon://home", // any
 			masterPages : [], // sap.ui.core.Control
 			detailPages : [], // sap.ui.core.Control
 			initialDetail : undefined, // sap.ui.core.Control
-			initialMaster : undefined // sap.ui.core.Control
+			initialMaster : undefined, // sap.ui.core.Control
+			masterButtonText : "Menu"
 			
 		});
 		//if(sap.ui.Device.system.phone)
-			app.setMode(sap.m.SplitAppMode.ShowHideMode);
+
 
 
 		
