@@ -1,5 +1,5 @@
 sap.ui.controller("homeautomation.controller.Lighting", {
-    server_url: "http://192.168.1.69:8080/",
+    server_url: "https://hydra.vermeers.ch:8443/",
     uplighter: false,
     twilight: false,
     /**
@@ -24,10 +24,10 @@ sap.ui.controller("homeautomation.controller.Lighting", {
             //password: 'D0m0t1c4',
             url: self.server_url,
             dataType: "json",
-            //beforeSend: function (request)
-            //{
-            //    request.setRequestHeader("Authorization", "Basic " + btoa('domoticaApp:D0m0t1c4'));
-            //},
+            beforeSend: function (request)
+            {
+                request.setRequestHeader("Authorization", "Basic " + btoa('domoticaApp:D0m0t1c4'));
+            },
             success: function (data) {
                 console.log(data);
                 if(data.living.uplighter == "on")
@@ -95,15 +95,11 @@ sap.ui.controller("homeautomation.controller.Lighting", {
     sendAjax: function(path) {
         jQuery.sap.require("sap.m.MessageBox");
         self = this;
-        path = 'domoticaApp:D0m0t1c4@' + self.server_url + path;
+        path = self.server_url + path;
         jQuery.ajax({
             type: "POST",
             contentType: "application/json",
             url: path,
-            xhrFields:
-            {
-                withCredentials: true
-            },
             beforeSend: function (request)
             {
                 request.setRequestHeader("Authorization", "Basic " + btoa('domoticaApp:D0m0t1c4'));
