@@ -22,11 +22,28 @@ sap.ui.core.UIComponent.extend("homeautomation.Component", {
 				targetControl : "saMain",
 				clearTarget : false
 			},
-			routes : [{
+			routes : [
+				{
 				pattern : "",
 				name : "main",
 				view : "Master",
 				targetAggregation : "masterPages",
+				subroutes : [{
+					name : "lighting",
+					view : "Lighting",
+					pattern : "lighting"
+				},
+				{
+					name : "heating",
+					view : "Heating",
+					pattern : "heating"
+				},
+				{
+						name : "entry",
+						view : "Entry",
+						pattern : "entry"
+				}
+				]
 			}]
 		}
 	},
@@ -43,10 +60,25 @@ sap.ui.core.UIComponent.extend("homeautomation.Component", {
 			listItemType:sap.ui.Device.system.phone?"Active":"Inactive"
 		});
 		deviceModel.setDefaultBindingMode("OneWay");
+		this.setModel(new sap.ui.model.json.JSONModel({
+			living: {
+			uplighter: "",
+				twilight: "",
+				twilights: "",
+				desklight: "",
+				temperature: ""
+			},
+			bedroom: {
+				saltlamp: "",
+				scent: ""
+			}}));
 		this.setModel(deviceModel,"device");
+		this.setModel(new sap.ui.model.json.JSONModel({
+			server_url: "https://hydra.vermeers.ch:8443/"
+		}), "server");
 		this.getRouter().initialize();
 		
-	},
+	}
 
 
 

@@ -13,19 +13,11 @@ sap.ui.controller("homeautomation.controller.Master", {
 		var title = oEvent.getSource().getProperty("title");
 		var router = sap.ui.core.UIComponent.getRouterFor(this);
 		if(title == "Lighting") {
-			router.navToView({
-				targetViewName : "homeautomation.view.Lighting",
-				targetViewType : "JS",
-				isMaster : false
-			});
-			
+			router.navTo("lighting");
 		} else if (title == "Leave/Enter") {
-			router.navToView({
-				targetViewName : "homeautomation.view.Entry",
-				targetViewType : "JS",
-				isMaster : false
-			});
-			
+			router.navTo("entry");
+		} else if (title == "Heating") {
+			router.navTo("heating");
 		}
 			
 	}

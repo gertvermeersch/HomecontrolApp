@@ -56,8 +56,7 @@ sap.ui.jsview("homeautomation.view.Master", {
  			console.log(e);
  		}
  		
- 		console.log(contentList);
- 		console.log(sap.ui.getCore().getModel());
+
  		
  		page.addContent(contentList);
  		return page;
