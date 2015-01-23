@@ -100,8 +100,10 @@ sap.ui.controller("homeautomation.controller.Lighting", {
             success: function (data) {
 
             },
-            error: function (data) {
-               sap.m.MessageBox.alert("Error while sending request: " + data.toString());
+            error: function (data, status, error) {
+               sap.m.MessageBox.alert("Error while sending request: " + error );
+                console.log(status);
+                console.log(error);
 
             }
 
