@@ -16,7 +16,7 @@ sap.ui.controller("homeautomation.controller.Heating", {
 
     refreshControls : function(self) {
         try {
-            sap.ui.getCore().byId("txtTemperature").setValue(self.getView().getModel().oData.living.temperature);
+            sap.ui.getCore().byId("txtTemperature").setText(self.getView().getModel().oData.living.temperature);
         } catch(e) {
             console.log(e);
         }
