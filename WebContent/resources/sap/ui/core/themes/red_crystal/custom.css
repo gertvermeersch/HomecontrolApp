@@ -1,0 +1,21 @@
+/**
+* Copyright (c) 2013 SAP AG, All Rights Reserved
+*
+* Theming Engine 1.7.0
+* data:{"Path": "UI5.sap/ui/core.red_crystal.custom", "PathPattern": "/%frameworkId%/%libId%/themes/%themeId%/%fileId%.css", "Version": { "Build":"1.24.2.20141118114330", "Source": "1.24.2", "Engine": "1.7.0"}}
+*/
+
+.sapThemeMetaData-UI5-sap-ui-core{background-image: url('data:text/plain;utf-8,{"Path": "UI5.sap/ui/core.red_crystal.custom", "PathPattern": "/%frameworkId%/%libId%/themes/%themeId%/%fileId%.css", "Version": { "Build":"1.24.2.20141118114330", "Source": "1.24.2", "Engine": "1.7.0"}}');}
+
+/******************* FILE /Base/baseLib/baseTheme/base.less *******************/
+/******************* FILE /Base/baseLib/sap_goldreflection/base.less *******************/
+/******************* FILE /Base/baseLib/sap_bluecrystal/base.less *******************/
+/******************* FILE /Base/baseLib/red_crystal/custom.less *******************/
+/*<SAP_FREETEXT_LESS>*/
+/*</SAP_FREETEXT_LESS>*/
+/******************* FILE /Base/baseLib/red_crystal/base.less *******************/
+/******************* FILE /UI5/sap/ui/core/themes/base/global.css *******************/
+/******************* FILE /UI5/sap/ui/core/themes/sap_bluecrystal/global.css *******************/
+/******************* FILE /UI5/sap/ui/core/themes/red_crystal/custom.less *******************/
+/*<SAP_FREETEXT_LESS>*/
+/*</SAP_FREETEXT_LESS>*/
