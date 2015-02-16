@@ -16,7 +16,7 @@ sap.ui.controller("homeautomation.controller.App", {
     onAfterRendering: function() {
         //refresh the model each 5 sec and on load
         var self = this;
-        var url = this.getView().getModel("server").oData.server_url;
+        var url = this.getView().getModel("server").oData.server_url + "states";
         console.log(url);
         this.refreshModel(url, self);
         setInterval(function(){self.refreshModel(url, self)}, 5000);

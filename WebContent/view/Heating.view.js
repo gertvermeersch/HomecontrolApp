@@ -35,9 +35,24 @@ sap.ui.jsview("homeautomation.view.Heating", {
         
         //start of current temperature
         
+        
+        
         _form.addContent(new sap.ui.core.Title({
-			text : "Current temperature"
+			text : "Live data"
 		}));
+        
+        _form.addContent(new sap.m.Label(
+                {
+                    id: "lblState",
+                    text: "Heating state"
+                }
+            ));
+
+            _form.addContent(new sap.m.Text( {
+                id : "txtHeatingState",
+                value: "Unknown - please wait",
+                editable: false,
+            }));
 
         _form.addContent(new sap.m.Label(
             {
@@ -52,13 +67,25 @@ sap.ui.jsview("homeautomation.view.Heating", {
             editable: false,
         }));
         
+        _form.addContent(new sap.m.Label(
+                {
+                    id: "lblTargetTemperature",
+                    text: "Target temperature"
+                }
+            ));
+
+            _form.addContent(new sap.m.Text( {
+                id : "txtTargetTemperature",
+                value: "Unknown - please wait",
+                editable: false,
+            }));
         _form.addContent(new sap.m.Label({
         	text: "Override button",
         }));
         
         _form.addContent(new sap.m.ToggleButton({
 			text : "@ home", // string,
-			id : "btnOverride",
+			id : "btnAtHome",
 			press : [ function(oEvent) {
 				var control = oEvent.getSource();
 			}, this ]
