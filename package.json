@@ -1,0 +1,24 @@
+{
+  "name": "HomeControlApp",
+  "version": "1.0.0",
+  "description": "OpenUI5 application to control home automation",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gertvermeersch/HomecontrolApp.git"
+  },
+  "keywords": [
+    "home",
+    "control",
+    "openui5"
+  ],
+  "author": "Gert Vermeersch",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gertvermeersch/HomecontrolApp/issues"
+  },
+  "homepage": "https://github.com/gertvermeersch/HomecontrolApp"
+}

@@ -28,29 +28,29 @@ sap.ui.controller("homeautomation.controller.Lighting", {
         var data = self.getView().getModel().oData;
         //console.log(data);
         try {
-            if (data.living.uplighter == "on")
+            if (data.living.uplighter == true)
                 sap.ui.getCore().byId("btnUplighter").setPressed(true);
-            else if (data.living.uplighter == "off")
+            else if (data.living.uplighter == false)
                 sap.ui.getCore().byId("btnUplighter").setPressed(false);
-            if (data.living.twilight == "on")
+            if (data.living.twilight == true)
                 sap.ui.getCore().byId("btnTwilight2").setPressed(true);
-            else if (data.living.twilight == "off")
+            else if (data.living.twilight == false)
                 sap.ui.getCore().byId("btnTwilight2").setPressed(false);
-            if (data.living.desklight == "on")
+            if (data.living.desklight == true)
                 sap.ui.getCore().byId("btnDesklight").setPressed(true);
-            else if (data.living.desklight == "off")
+            else if (data.living.desklight == false)
                 sap.ui.getCore().byId("btnDesklight").setPressed(false);
-            if (data.living.twilights == "on")
+            if (data.living.twilights == true)
                 sap.ui.getCore().byId("btnTwilight1").setPressed(true);
-            else if (data.living.twilights == "off")
+            else if (data.living.twilights == false)
                 sap.ui.getCore().byId("btnTwilight1").setPressed(false);
-            if (data.bedroom.saltlamp == "on")
+            if (data.bedroom.saltlamp == true)
                 sap.ui.getCore().byId("btnSaltlamp").setPressed(true);
-            else if (data.bedroom.saltlamp == "off")
+            else if (data.bedroom.saltlamp == false)
                 sap.ui.getCore().byId("btnSaltlamp").setPressed(false);
-            if (data.bedroom.scent == "on")
+            if (data.bedroom.scent == true)
                 sap.ui.getCore().byId("btnScent").setPressed(true);
-            else if (data.bedroom.scent == "off")
+            else if (data.bedroom.scent == false)
                 sap.ui.getCore().byId("btnScent").setPressed(false);
         } catch(e) {
             console.log(e);

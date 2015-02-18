@@ -62,16 +62,22 @@ sap.ui.core.UIComponent.extend("homeautomation.Component", {
 		deviceModel.setDefaultBindingMode("OneWay");
 		this.setModel(new sap.ui.model.json.JSONModel({
 			living: {
-			uplighter: "",
-				twilight: "",
-				twilights: "",
-				desklight: "",
-				temperature: ""
+				uplighter: false,
+				twilight: false,
+				twilights: false,
+				desklight: false
+
 			},
 			bedroom: {
-				saltlamp: "",
-				scent: ""
-			}}));
+				saltlamp: false,
+				scent: false
+			},
+			shut_off: false,
+			at_home: false,
+			target_temperature: 0,
+			temperature: 0,
+			humidity: 0,
+			heating_state:false}));
 		this.setModel(deviceModel,"device");
 		this.setModel(new sap.ui.model.json.JSONModel({
 			server_url: "https://hydra.vermeers.ch:8443/"

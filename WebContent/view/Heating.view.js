@@ -1,6 +1,9 @@
 /**
  * Created by GeVr on 22/01/2015.
  */
+
+jQuery.sap.require("sap.m.MessageBox");
+
 sap.ui.jsview("homeautomation.view.Heating", {
     getControllerName : function() {
         return "homeautomation.controller.Heating";
@@ -81,13 +84,14 @@ sap.ui.jsview("homeautomation.view.Heating", {
             }));
         _form.addContent(new sap.m.Label({
         	text: "Override button",
+
         }));
         
         _form.addContent(new sap.m.ToggleButton({
 			text : "@ home", // string,
 			id : "btnAtHome",
 			press : [ function(oEvent) {
-				var control = oEvent.getSource();
+				oController.onPressOverride(oEvent);
 			}, this ]
 		}));
 		
@@ -115,7 +119,8 @@ sap.ui.jsview("homeautomation.view.Heating", {
         ));
         _form.addContent(new sap.m.Input( {
             id : "itxHomeTemp",
-            value: "XX°"
+            value: "XX°",
+            editable: false
         }));
         
         _form.addContent(new sap.m.Label(
@@ -125,7 +130,8 @@ sap.ui.jsview("homeautomation.view.Heating", {
             ));
         _form.addContent(new sap.m.Input( {
             id : "itxAwayTemp",
-            value: "XX°"
+            value: "XX°",
+            editable: false
         }));
     
         //end of temperature settings
@@ -146,12 +152,14 @@ sap.ui.jsview("homeautomation.view.Heating", {
 			type : sap.m.DateTimeInputType.Time, // sap.m.DateTimeInputType
 			displayFormat : undefined, // string
 			valueFormat : undefined, // string
+            editable: false
 		}));
         _form.addContent(new sap.m.DateTimeInput({
         	id : "dtiMorningEnd",
 			type : sap.m.DateTimeInputType.Time, // sap.m.DateTimeInputType
 			displayFormat : undefined, // string
 			valueFormat : undefined, // string
+            editable: false
 		}));
         
         _form.addContent(new sap.m.Label(
@@ -164,12 +172,14 @@ sap.ui.jsview("homeautomation.view.Heating", {
 			type : sap.m.DateTimeInputType.Time, // sap.m.DateTimeInputType
 			displayFormat : undefined, // string
 			valueFormat : undefined, // string
+            editable: false
 		}));
         _form.addContent(new sap.m.DateTimeInput({
         	id : "dtiEveningEnd",
 			type : sap.m.DateTimeInputType.Time, // sap.m.DateTimeInputType
 			displayFormat : undefined, // string
 			valueFormat : undefined, // string
+            editable: false
 		}));
         
         
@@ -187,12 +197,14 @@ sap.ui.jsview("homeautomation.view.Heating", {
 			type : sap.m.DateTimeInputType.Time, // sap.m.DateTimeInputType
 			displayFormat : undefined, // string
 			valueFormat : undefined, // string
+            editable: false
 		}));
         _form.addContent(new sap.m.DateTimeInput({
         	id : "dtiWeekendEnd",
 			type : sap.m.DateTimeInputType.Time, // sap.m.DateTimeInputType
 			displayFormat : undefined, // string
 			valueFormat : undefined, // string
+            editable: false
 		}));
         
         
@@ -201,18 +213,46 @@ sap.ui.jsview("homeautomation.view.Heating", {
 				{
 					contentRight : [
 							new sap.m.Button(
-									{
-										text : 'Save', // string
-										type : sap.m.ButtonType.Accept,
-										press : [
-												function(
-														oEvent) {
-													
-													oController.onSaveButton(oEvent);
-												},
-												this ]
-									})
-							]
+                            {
+                                id: 'btnSave',
+                                text : 'Save', // string
+                                type : sap.m.ButtonType.Accept,
+                                visible: false,
+                                press : [
+                                    function(
+                                        oEvent) {
+                                        oController.onSaveButton(oEvent);
+                                    },
+                                    this ]
+                            }),
+                        new sap.m.Button(
+                            {
+                                id: 'btnEdit',
+                                text : 'Edit', // string
+                                press : [
+                                    function(
+                                        oEvent) {
+
+                                        oController.onEditButton(oEvent);
+                                    },
+                                    this ]
+                                
+                            }),
+                        new sap.m.Button(
+                            {
+                                id : 'btnCancel',
+                                text : 'Cancel', // string,
+                                visible: false,
+                                type : sap.m.ButtonType.Reject,
+                                press : [
+                                    function(
+                                        oEvent) {
+
+                                        oController.onCancelButton(oEvent);
+                                    },
+                                    this ]
+                            })
+                    ]
 		}));
         
        //end of timing settings
@@ -221,5 +261,26 @@ sap.ui.jsview("homeautomation.view.Heating", {
         
 
         return _page;
+    },
+
+    showSuccess: function() {
+        sap.m.MessageBox.show(
+            "Settings saved", {
+                icon: sap.m.MessageBox.Icon.SUCCESS,
+                title: "Climate control",
+                actions: [sap.m.MessageBox.Action.OK]
+            }
+        );
+    },
+
+    showError: function(error) {
+        sap.m.MessageBox.show(
+            "An error occurred while saving the settings", {
+                icon: sap.m.MessageBox.Icon.ERROR,
+                title: "Climate control",
+                actions: [sap.m.MessageBox.Action.OK]
+            }
+        );
+        console.log(error.message);
     }
 })
