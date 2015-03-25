@@ -161,6 +161,47 @@ sap.ui.controller("homeautomation.controller.Heating", {
         sap.ui.getCore().byId("btnEdit").setVisible(true);
         this._edit = false;
 
-    }
+    },
+
+    toMaster: function() {
+        var page = sap.ui.getCore().byId("saMain").getCurrentMasterPage(true);
+        sap.ui.getCore().byId("saMain").backToTopMaster();
+    },
+
+    onButtonPress: function(oEvent, path) {
+        self = this;
+        console.log(oEvent.getSource().sId);
+        console.log(path);
+        //get state of the button
+        var state = oEvent.getSource().getPressed();
+        oFullpath = path.concat(state?"on":"off");
+        self.sendAjax(oFullpath);
+    },
+
+    sendAjax: function(path) {
+        jQuery.sap.require("sap.m.MessageBox");
+        self = this;
+        path = this.getView().getModel("server").oData.server_url + path;
+        jQuery.ajax({
+            type: "POST",
+            contentType: "application/json",
+            url: path,
+            beforeSend: function (request)
+            {
+                request.setRequestHeader("Authorization", "Basic " + btoa('domoticaApp:D0m0t1c4'));
+            },
+            dataType: "json",
+            success: function (data) {
+
+            },
+            error: function (data, status, error) {
+                sap.m.MessageBox.alert("Error while sending request: " + error );
+                console.log(status);
+                console.log(error);
+
+            }
+
+        });
+    },
 
 })

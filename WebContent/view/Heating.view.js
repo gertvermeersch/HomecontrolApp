@@ -91,7 +91,7 @@ sap.ui.jsview("homeautomation.view.Heating", {
 			text : "@ home", // string,
 			id : "btnAtHome",
 			press : [ function(oEvent) {
-				oController.onPressOverride(oEvent);
+				oController.onButtonPress(oEvent, "at_home/");
 			}, this ]
 		}));
 		
@@ -100,7 +100,7 @@ sap.ui.jsview("homeautomation.view.Heating", {
 			id : "btnShutOff",
 			type: sap.m.ButtonType.Reject,
 			press : [ function(oEvent) {
-				var control = oEvent.getSource();
+                oController.onButtonPress(oEvent, "shut_off/");
 			}, this ]
 		}));
         

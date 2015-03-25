@@ -234,6 +234,9 @@ sap.ui.jsview("homeautomation.view.Lighting", {
 			showNavButton: sap.ui.Device.system.phone,
 			navButtonPress: [oController.toMaster, oController]
 		});
+
+        page.setFooter(new sap.m.Bar(
+            {}));
 		
 		page.addContent(itRoomSelector);
 		
