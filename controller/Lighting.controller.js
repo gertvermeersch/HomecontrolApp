@@ -25,7 +25,7 @@ sap.ui.controller("homeautomation.controller.Lighting", {
     },
 
     refreshControls: function(self) {
-        var data = self.getView().getModel().oData;
+        var data = self.getView().getModel("outlets").oData;
         //console.log(data);
         try {
             if (data.living.uplighter == true)

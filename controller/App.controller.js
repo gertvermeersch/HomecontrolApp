@@ -18,29 +18,50 @@ sap.ui.controller("homeautomation.controller.App", {
         var self = this;
         var url = this.getView().getModel("server").oData.server_url + "states";
         console.log(url);
-        this.refreshModel(url, self);
-        setInterval(function(){self.refreshModel(url, self)}, 5000);
+        this.refreshModel();
+        setInterval(function(){self.refreshModel()}, 5000);
 	},
 
-    refreshModel : function(url, self) {
-
+    refreshModel : function() {
+		var urlOutlets = this.getView().getModel("server").oData.server_url + "outlets/all";
+		var urlClimate = this.getView().getModel("server").oData.server_url + "climate/sensors";
+		var self = this;
+		
         jQuery.ajax({
             type: "GET",
             contentType: "application/json",
-            url: url,
+            url: urlOutlets,
             dataType: "json",
             beforeSend: function (request) {
                 request.setRequestHeader("Authorization", "Basic ZG9tb3RpY2FBcHA6RDBtMHQxYzQ=");
             },
             success: function (data) {
                 //console.log(data);
-                self.getView().setModel(new sap.ui.model.json.JSONModel(data));
+                self.getView().setModel("outlets", new sap.ui.model.json.JSONModel(data));
                 sap.ui.getCore().getEventBus().publish("model", "update");
             },
             error: function (error) {
                 //do nothing
             }
-        })
+        });
+        
+        jQuery.ajax({
+            type: "GET",
+            contentType: "application/json",
+            url: urlClimate,
+            dataType: "json",
+            beforeSend: function (request) {
+                request.setRequestHeader("Authorization", "Basic ZG9tb3RpY2FBcHA6RDBtMHQxYzQ=");
+            },
+            success: function (data) {
+                //console.log(data);
+                self.getView().setModel("climate", new sap.ui.model.json.JSONModel(data));
+                sap.ui.getCore().getEventBus().publish("model", "update");
+            },
+            error: function (error) {
+                //do nothing
+            }
+        });
     }
 
 /**

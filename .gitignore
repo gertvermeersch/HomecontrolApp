@@ -4,3 +4,5 @@ resources/*
 .project
 .classpath
 .settings/
+/sap-ui-cachebuster-info.json
+/.user.project.json

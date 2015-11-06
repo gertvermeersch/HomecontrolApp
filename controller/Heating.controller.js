@@ -19,7 +19,7 @@ sap.ui.controller("homeautomation.controller.Heating", {
     
     refreshConfig : function() {
         var self = this;
-    	var url = this.getView().getModel("server").oData.server_url + "heating";
+    	var url = this.getView().getModel("server").oData.server_url + "climate/config";
         jQuery.ajax({
                 type: "GET",
                 contentType: "application/json",
@@ -55,21 +55,21 @@ sap.ui.controller("homeautomation.controller.Heating", {
         var self = this;
 
             try {
-                var value = self.getView().getModel().oData.temperature;
+                var value = self.getView().getModel("climate").oData.temperature;
                 if (value != "")
                     sap.ui.getCore().byId("txtTemperature").setText(value);
-                var value = self.getView().getModel().oData.target_temperature;
+                var value = self.getView().getModel("climate").oData.target_temperature;
                 if (value != "")
                     sap.ui.getCore().byId("txtTargetTemperature").setText(value);
-                var value = self.getView().getModel().oData.heating_state;
+                var value = self.getView().getModel("climate").oData.heating_state;
                     sap.ui.getCore().byId("txtHeatingState").setText(value ? "ON" : "OFF");
-                var value = self.getView().getModel().oData.at_home;
+                var value = self.getView().getModel("climate").oData.at_home;
                 if (value)
                     sap.ui.getCore().byId("btnAtHome").setPressed(true);
                 else
                     sap.ui.getCore().byId("btnAtHome").setPressed(false);
 
-                var value = self.getView().getModel().oData.shut_off;
+                var value = self.getView().getModel("climate").oData.shut_off;
                 if (value)
                     sap.ui.getCore().byId("btnShutOff").setPressed(true);
                 else
